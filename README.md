@@ -10,7 +10,7 @@ Audit and Investor apps might be reviewed on http://localhost:4201/ and http://l
 ## Explanation of the app
 
 ### High-Level Concept
-1. Module Federation + Nx Monorepo are used to split one large application into multiple independently deployable micro frontends.
+1. `Module Federation + Nx Monorepo` are used to split one large application into multiple independently deployable micro frontends.
 2. There is one host application (dashboard) and two remote applications (audit and investor). Each contains tools/features used by specific user groups.
 3. All three apps are built and deployed independently, but at runtime the host dynamically loads the remote apps.
 
@@ -27,13 +27,14 @@ Each app is a separate build target in Nx:
 
 ### Deployment Strategy
 
-Host Deployment
+Host Deployment Example
 - Deployed to a central domain (e.g., `https://app.company.com/`)
 - Knows where to load remotes from using remoteEntry.js URLs. Example (`apps/dashboard/webpack.prod.config.ts`)
 
-Remote (audit) Deployment
+
+Remote (audit) Deployment Example
 - Built independently
-- Outputs a remoteEntry.js bundle (and chunks).
+- Outputs a `remoteEntry.js` bundle (and chunks).
 - Deployed to a remote domain (e.g., `https://audit.company.com/`).
 - The host app does not need to be rebuilt if only audit changes
 
