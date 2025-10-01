@@ -1,20 +1,20 @@
-
-
-How to run:
+## How to run
 1. Use `npm run start:dashboard` to start the dashboard application
 2. Open http://localhost:4200/ to review the dashboard and links to the remote applications
 3. Click on Audit or Investor to review the remote application
 
+If you want to run the remote applications, you need to run `nx serve audit` and `nx serve investor` separately.
+
 Audit and Investor apps might be reviewed on http://localhost:4201/ and http://localhost:4202/ accordingly
 
-Explanation of the app:
+## Explanation of the app
 
-High-Level Concept
+### High-Level Concept
 1. Module Federation + Nx Monorepo are used to split one large application into multiple independently deployable micro frontends.
 2. There is one host application (dashboard) and two remote applications (audit and investor). Each contains tools/features used by specific user groups.
 3. All three apps are built and deployed independently, but at runtime the host dynamically loads the remote apps.
 
-Build Strategy
+### Build Strategy
 
 Each app is a separate build target in Nx:
 
@@ -25,7 +25,7 @@ Each app is a separate build target in Nx:
 | investor  | `nx build investor --configuration=production   ` | `dist/apps/investor`  |
 
 
-Deployment Strategy
+### Deployment Strategy
 
 Host Deployment
 - Deployed to a central domain (e.g., `https://app.company.com/`)
